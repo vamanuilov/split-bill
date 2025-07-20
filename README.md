@@ -1,125 +1,146 @@
 # Split Bill App
 
-Современное, отзывчивое веб-приложение для разделения счетов между друзьями. Позволяет легко добавлять позиции, назначать людей и рассчитывать, кто сколько должен заплатить.
+A modern, responsive web application for splitting bills between friends. Easily add items, assign people, and calculate who owes what.
 
-## Основные функции
+## Key Features
 
-- Удобный пользовательский интерфейс с поддержкой темной и светлой темы
-- Динамическое управление счетами
-- Гибкое назначение людей на позиции счета
-- Умное распределение затрат
-- Интерактивная сводка с раскрывающимися карточками
-- Модальные окна для аутентификации, выбора темы, валюты и управления списком друзей
+- **Intuitive UI** with dark/light theme support
+- **Dynamic bill management** with real-time calculations
+- **Flexible person assignment** to bill items
+- **Smart cost distribution** across multiple people
+- **Interactive summary** with expandable cards
+- **Friends management** with quick selection dropdown
+- **Settings dropdown** with integrated theme toggle
+- **Persistent preferences** stored in localStorage
+- **Responsive design** optimized for mobile and desktop
 
-## Технологический стек
+## Technology Stack
 
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **Framework**: Vite
-- **UI компоненты**: Custom components с Lucide React иконками
-- **Управление состоянием**: React Context API, React Hooks
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Build Tool**: Vite
+- **UI Components**: Custom components with Lucide React icons
+- **State Management**: React Context API, React Hooks
 - **Backend**: Express.js (REST API)
-- **Архитектура**: Монорепозиторий с разделением на клиентскую и серверную части
+- **Architecture**: Monorepo with client/server separation
+- **Styling**: Tailwind CSS with dark mode support
 
-## Установка и запуск
+## Installation & Setup
 
-### Локальная разработка
+### Local Development
 
 ```bash
-# Установка зависимостей
+# Install dependencies
 npm install
 
-# Запуск клиентской части (режим разработки)
+# Start client (development mode)
 npm run dev
 
-# Запуск серверной части
+# Start server
 npm run server
 
-# Запуск всего проекта одновременно
+# Start both client and server
 npm run dev:all
 ```
 
 ### Docker
 
-#### Разработка с Docker
+#### Development with Docker
 
 ```bash
-# Запуск в режиме разработки (из корня проекта)
+# Start in development mode (from project root)
 npm run docker:dev
 
-# Или напрямую
+# Or directly
 docker-compose -f docker/docker-compose.yml --profile dev up --build
 
-# Остановка
+# Stop
 npm run docker:dev:down
-# или
+# or
 docker-compose -f docker/docker-compose.yml --profile dev down
 ```
 
-#### Продакшн с Docker
+#### Production with Docker
 
 ```bash
-# Запуск в продакшн режиме (из корня проекта)
+# Start in production mode (from project root)
 npm run docker:prod
 
-# Или напрямую
+# Or directly
 docker-compose -f docker/docker-compose.yml --profile prod up --build -d
 
-# Остановка
+# Stop
 npm run docker:prod:down
-# или
+# or
 docker-compose -f docker/docker-compose.yml --profile prod down
 
-# Просмотр логов
+# View logs
 npm run docker:logs
 ```
 
-#### Доступные порты
+#### Available Ports
 
-- **Разработка**: 
+- **Development**: 
   - Frontend: http://localhost:5173 (Vite dev server)
   - Backend API: http://localhost:5000
-- **Продакшн**:
-  - Express сервер (frontend + API): http://localhost:5000
-  - Nginx (все запросы): http://localhost:80
+- **Production**:
+  - Express server (frontend + API): http://localhost:5000
+  - Nginx (all requests): http://localhost:80
 
-# Запуск клиента и сервера одновременно
-```bash
-npm run dev:all
-```
+### Build for Production
 
-# Сборка для продакшена
 ```bash
 npm run build
 ```
 
-## Структура проекта
+## Project Structure
 
 ```
 src/
-├── client/            # Клиентская часть (React + TypeScript)
-│   ├── api/           # API клиент и сервисы
-│   ├── components/    # React компоненты
-│   │   └── modals/    # Модальные окна
-│   ├── contexts/      # React контексты
-│   └── types/         # TypeScript типы
-└── server/            # Серверная часть (Express + TypeScript)
-    └── routes/        # API маршруты
+├── client/                 # Client-side (React + TypeScript)
+│   ├── api/               # API client and services
+│   ├── components/        # React components
+│   │   ├── modals/        # Modal windows
+│   │   ├── FriendSelector.tsx    # Friend selection dropdown
+│   │   ├── SettingsDropdown.tsx  # Settings with theme toggle
+│   │   └── ...
+│   ├── contexts/          # React contexts (Theme, Modal, Auth)
+│   └── types/             # TypeScript type definitions
+└── server/                # Server-side (Express + TypeScript)
+    └── routes/            # API routes
 ```
 
-## Руководство по использованию
+## Usage Guide
 
-1. Добавьте людей, которые участвуют в разделении счета
-2. Добавьте позиции счета с названием и ценой
-3. Назначьте людей на каждую позицию
-4. Просмотрите итоговую сумму для каждого человека в разделе сводки
+1. **Add People**: Use the input field or select from your saved friends list
+2. **Add Items**: Create bill items with name and price
+3. **Assign People**: Select who should pay for each item
+4. **View Summary**: Check the calculated amount each person owes
+5. **Manage Settings**: Use the settings dropdown to toggle theme, manage currency, or edit friends
 
-## Оптимизации производительности
+## Features in Detail
 
-- Использование useCallback и useMemo для оптимизации рендеринга
-- Мемоизация вычислений для расчета сумм
-- Оптимизированные стили с Tailwind CSS
-- Ленивая загрузка модальных окон
+### Friends Management
+- Save frequently used friends for quick access
+- Dropdown selector for easy person addition
+- Persistent storage in localStorage
 
-## Лицензия
+### Theme System
+- Integrated theme toggle in settings dropdown
+- Automatic system theme detection
+- Persistent theme preference across sessions
+
+### Responsive Design
+- Mobile-first approach with responsive layouts
+- Touch-friendly interface on mobile devices
+- Optimized button sizing and spacing
+
+## Performance Optimizations
+
+- **React Optimization**: useCallback and useMemo for render optimization
+- **Calculation Memoization**: Smart caching of bill calculations
+- **CSS Optimization**: Tailwind CSS with purging for minimal bundle size
+- **Component Architecture**: Modular components for better code splitting
+
+## License
 
 MIT
