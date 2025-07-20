@@ -1,5 +1,7 @@
 # Split Bill App
 
+🚀 **[Live Demo](https://split-bill-vm.vercel.app/)** | Try it now!
+
 A modern, responsive web application for splitting bills between friends. Easily add items, assign people, and calculate who owes what.
 
 ## Key Features
@@ -100,8 +102,6 @@ src/
 │   ├── api/               # API client and services
 │   ├── components/        # React components
 │   │   ├── modals/        # Modal windows
-│   │   ├── FriendSelector.tsx    # Friend selection dropdown
-│   │   ├── SettingsDropdown.tsx  # Settings with theme toggle
 │   │   └── ...
 │   ├── contexts/          # React contexts (Theme, Modal, Auth)
 │   └── types/             # TypeScript type definitions
