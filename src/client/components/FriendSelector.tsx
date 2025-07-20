@@ -34,7 +34,7 @@ export const FriendSelector = ({ onSelectFriend }: FriendSelectorProps) => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded whitespace-nowrap cursor-pointer min-w-[120px]"
+        className="flex items-center h-full justify-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded whitespace-nowrap cursor-pointer"
       >
         <UserPlus size={16} className="mr-1" />
         <span className="text-sm">Friends</span>

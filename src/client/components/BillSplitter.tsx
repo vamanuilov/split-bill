@@ -4,13 +4,12 @@ import type { Person, Position } from '../types';
 import PeopleManager from './PeopleManager';
 import PositionsList from './PositionsList';
 import SummarySection from './SummarySection';
-import { useModal } from '../contexts/ModalContext';
+import { SettingsDropdown } from './SettingsDropdown';
 
 export const BillSplitterApp: FC = () => {
   const [people, setPeople] = useState<Person[]>([]);
   const [positions, setPositions] = useState<Position[]>([]);
   const [editingPosition, setEditingPosition] = useState<number | null>(null);
-  const { openModal } = useModal();
 
   const addPerson = useCallback((name: string) => {
     const trimmedName = name.trim();
@@ -117,29 +116,7 @@ export const BillSplitterApp: FC = () => {
               <Calculator className="mr-2 sm:mr-3 text-blue-600 dark:text-blue-400 h-6 w-6 sm:h-8 sm:w-8" />
               <span>Bill Splitter</span>
             </h1>
-            <div className="flex space-x-2">
-              <button
-                onClick={() => openModal('theme')}
-                className="btn btn-secondary text-sm p-2"
-                aria-label="Theme settings"
-              >
-                Theme
-              </button>
-              <button
-                onClick={() => openModal('currency')}
-                className="btn btn-secondary text-sm p-2"
-                aria-label="Currency settings"
-              >
-                Currency
-              </button>
-              <button
-                onClick={() => openModal('friends')}
-                className="btn btn-secondary text-sm p-2"
-                aria-label="Friends list"
-              >
-                Friends
-              </button>
-            </div>
+            <SettingsDropdown />
           </div>
 
           <PeopleManager
