@@ -46,7 +46,7 @@ export const FriendSelector = ({ onSelectFriend }: FriendSelectorProps) => {
 
       {isOpen && (
         <div className="absolute top-full right-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-10">
-          <div className="py-1 max-h-48 overflow-y-auto">
+          <div className="max-h-48 overflow-y-auto">
             {friends.map(friend => (
               <button
                 key={friend.id}

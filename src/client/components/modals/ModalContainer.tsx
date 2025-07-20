@@ -1,11 +1,10 @@
-import { useModal } from '../../contexts/ModalContext';
-import { AuthModal } from './AuthModal';
-import { ThemeModal } from './ThemeModal';
-import { CurrencyModal } from './CurrencyModal';
-import { FriendsModal } from './FriendsModal';
+import {useModal} from '../../contexts/ModalContext';
+import {AuthModal} from './AuthModal';
+import {CurrencyModal} from './CurrencyModal';
+import {FriendsModal} from './FriendsModal';
 
 export const ModalContainer = () => {
-  const { modalType, modalProps, closeModal } = useModal();
+  const {modalType, modalProps, closeModal} = useModal();
 
   if (!modalType) return null;
 
@@ -13,8 +12,6 @@ export const ModalContainer = () => {
     switch (modalType) {
       case 'auth':
         return <AuthModal onClose={closeModal} {...modalProps} />;
-      case 'theme':
-        return <ThemeModal onClose={closeModal} {...modalProps} />;
       case 'currency':
         return <CurrencyModal onClose={closeModal} {...modalProps} />;
       case 'friends':

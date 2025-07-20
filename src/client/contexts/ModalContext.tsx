@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, type ReactNode } from 'react';
 
-export type ModalType = 'auth' | 'theme' | 'currency' | 'friends' | null;
+export type ModalType = 'auth' | 'currency' | 'friends' | null;
 
 interface ModalContextType {
   modalType: ModalType;

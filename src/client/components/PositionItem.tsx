@@ -51,7 +51,7 @@ const PositionItem: FC<PositionItemProps> = ({
   }, [isEditing]);
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg py-4 mb-3">
+    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg py-4 px-2 mb-3">
       <div className="flex justify-between items-start mb-3">
         <div className="flex-1">
           {isEditing ? (
