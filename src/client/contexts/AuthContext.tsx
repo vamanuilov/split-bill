@@ -22,22 +22,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Проверка аутентификации при загрузке
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        // Сначала проверяем локальное хранилище для быстрой загрузки
         const savedUser = localStorage.getItem('user');
         if (savedUser) {
           setUser(JSON.parse(savedUser));
         }
-        
-        // Затем проверяем на сервере (в реальном приложении)
-        // const response = await authService.getCurrentUser();
-        // if (response.data) {
-        //   setUser(response.data);
-        //   localStorage.setItem('user', JSON.stringify(response.data));
-        // }
       } catch (error) {
         console.error('Auth error:', error);
         localStorage.removeItem('user');
@@ -52,15 +43,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = useCallback(async (email: string, _password: string) => {
     setIsLoading(true);
     try {
-      // В реальном приложении используем API
-      // const response = await authService.login({ email, password });
-      // if (response.error) throw new Error(response.error);
-      // if (response.data) {
-      //   setUser(response.data.user);
-      //   localStorage.setItem('user', JSON.stringify(response.data.user));
-      // }
-      
-      // Для демо используем моковые данные
       const mockUser = {
         id: '1',
         name: 'Test User',
@@ -80,15 +62,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const register = useCallback(async (name: string, email: string, _password: string) => {
     setIsLoading(true);
     try {
-      // В реальном приложении используем API
-      // const response = await authService.register({ name, email, password });
-      // if (response.error) throw new Error(response.error);
-      // if (response.data) {
-      //   setUser(response.data.user);
-      //   localStorage.setItem('user', JSON.stringify(response.data.user));
-      // }
-      
-      // Для демо используем моковые данные
       const mockUser = {
         id: '1',
         name,
@@ -106,8 +79,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const logout = useCallback(() => {
-    // В реальном приложении вызываем API
-    // authService.logout();
     setUser(null);
     localStorage.removeItem('user');
   }, []);

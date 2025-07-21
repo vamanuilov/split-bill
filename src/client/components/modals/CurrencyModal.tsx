@@ -27,7 +27,6 @@ export const CurrencyModal = ({ onClose }: CurrencyModalProps) => {
   };
 
   const handleSave = () => {
-    // In a real app, this might update a global state or context
     localStorage.setItem('currency', JSON.stringify(selectedCurrency));
     onClose();
   };

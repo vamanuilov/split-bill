@@ -22,7 +22,6 @@ const SummarySection: FC<SummarySectionProps> = ({ people, positions, totals, gr
     );
   };
   
-  // Get currency from localStorage or use default
   const getCurrency = () => {
     const savedCurrency = localStorage.getItem('currency');
     if (savedCurrency) {

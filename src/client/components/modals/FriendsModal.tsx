@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X, Plus, Trash2 } from 'lucide-react';
 
 interface FriendsModalProps {
@@ -11,16 +11,15 @@ interface Friend {
 }
 
 export const FriendsModal = ({ onClose }: FriendsModalProps) => {
-  const [friends, setFriends] = useState<Friend[]>([]);
-  const [newFriendName, setNewFriendName] = useState('');
-
-  useEffect(() => {
-    // Load saved friends from localStorage
+  const [friends, setFriends] = useState<Friend[]>(() => {
     const savedFriends = localStorage.getItem('friends');
+
     if (savedFriends) {
-      setFriends(JSON.parse(savedFriends));
+      return JSON.parse(savedFriends);
     }
-  }, []);
+    return [];
+  });
+  const [newFriendName, setNewFriendName] = useState('');
 
   const saveFriends = (updatedFriends: Friend[]) => {
     localStorage.setItem('friends', JSON.stringify(updatedFriends));
